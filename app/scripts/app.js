@@ -47,6 +47,16 @@ angular
         controller: 'AuthorsShowCtrl',
         controllerAs: 'authorsShow'
       })
+      .when('/authors/:author_id/books/new', {
+        templateUrl: 'views/books/new.html',
+        controller: 'BooksNewCtrl',
+        controllerAs: 'booksNew'
+      })
+      .when('/authors/:author_id/books/:id/edit', {
+        templateUrl: 'views/books/edit.html',
+        controller: 'BooksEditCtrl',
+        controllerAs: 'booksEdit'
+      })
       .otherwise({
         redirectTo: '/'
       });
