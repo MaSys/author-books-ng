@@ -6,5 +6,5 @@ angular.module('authorBooksApp')
     }, {
       update: { method: 'PUT' }
     });
-    return author
+    return book
   }]);
