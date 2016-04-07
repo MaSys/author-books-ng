@@ -220,4 +220,82 @@ now we have all the routes for authors.
 you can add the templates with the design you want:
 
 ```html
+<!-- app/views/authors/index.html -->
+
+<h1 class="">Authors</h1>
+<div class="row">
+  <div class="col-md-8"></div>
+  <div class="col-md-4">
+    <a href="#/authors/new" class="btn btn-primary">New</a>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+      <th width="120"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="author in authors">
+      <td>
+        <a ng-href="#/authors/{{ author.id }}">
+          {{ author.title }}
+        </a>
+      </td>
+      <td>
+        <a class="btn btn-default" ng-href="#/authors/{{ author.id }}/edit">Edit</a>
+        <a class="btn btn-danger" ng-click="delete(author)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+```html
+<!-- app/views/authors/new.html -->
+
+<form class="">
+  <div ng-include="'views/authors/_form.html'"></div>
+  <br>
+  <button class="btn btn-primary" type="submit">Create</button>
+  <a ng-href="#/authors" class="btn btn-default"> Cancel </a>
+</form>
+```
+
+```html
+<!-- app/views/authors/edit.html -->
+
+<form class="">
+  <div ng-include="'views/authors/_form.html'"></div>
+  <br>
+  <button type="submit" class="btn btn-primary" ng-click="update(author)"> Update </button>
+  <a ng-href="#/authors" class="btn btn-default"> Cancel </a>
+</form>
+```
+
+```html
+<!-- app/views/authors/_form.html -->
+
+<div class="field">
+  <label for="author-title">Title</label>
+  <input ng-model="author.title" type="text" id="author-title" class="form-control" />
+</div>
+```
+
+```html
+<!-- app/views/authors/show.html -->
+
+<div class="row">
+  <div class="col-md-8">
+    <h1 class="">{{ author.title }}</h1>
+  </div>
+  <div class="col-md-4">
+    <a ng-href="#/authors" class="btn btn-default"> Back </a>
+    <a ng-href="#/authors/{{ author.id }}/edit" class="btn btn-primary"> Edit </a>
+    <a ng-click="delete(author)" class="btn btn-danger"> Delete </a>
+  </div>
+</div>
 ```
