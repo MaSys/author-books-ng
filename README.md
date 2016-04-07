@@ -56,9 +56,11 @@ let's start with the Author model:
 // app/scripts/services/author.js
 
 angular.module('maSysPayApp')
-  .factory('Account', ['$resource', 'apiUrl', function($resource, apiUrl){
+  .factory('Author', ['$resource', 'apiUrl', function($resource, apiUrl){
     var author = $resource(apiUrl + '/authors/:id', { id: '@id' }, { update: method: 'PUT' });
     return author
   }]);
 ```
 we have passed the apiUrl constant, to set the resource url, and then we have to set the update method.
+
+## Book Factory
