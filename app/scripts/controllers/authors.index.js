@@ -1,6 +1,6 @@
 angular
   .module('maSysPayApp')
-  .controller('AccountsIndexCtrl', [
+  .controller('AuthorsIndexCtrl', [
     '$scope',
     'Author',
     fanction($scope, Author){
