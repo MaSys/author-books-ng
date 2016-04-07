@@ -29,4 +29,5 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .constant('apiUrl', 'htt://localhost:3000/api');

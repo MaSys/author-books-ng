@@ -15,3 +15,35 @@ $ yo angular [name]
 
 you will see some questions about some models to include in the app, choose to use `grunt`.
 
+## API URL:
+Now that you have created the app, you have to set the API URL.
+you can use [grunt proxy](https://github.com/drewzboto/grunt-connect-proxy), but I will assign it with a constant of angular.
+
+the final code will be:
+```javascript
+// app/scripts/app.js
+
+angular
+  .module('authorBooksApp', [
+    'ngAnimate',
+    'ngAria',
+    'ngCookies',
+    'ngMessages',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  })
+  .constant('apiUrl', 'htt://localhost:3000/api');
+```
