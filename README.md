@@ -47,3 +47,18 @@ angular
   })
   .constant('apiUrl', 'htt://localhost:3000/api');
 ```
+
+## Author Factory
+before you start to work with the API, you have to prepar your models.
+let's start with the Author model:
+
+```javascript
+// app/scripts/services/author.js
+
+angular.module('maSysPayApp')
+  .factory('Account', ['$resource', 'apiUrl', function($resource, apiUrl){
+    var author = $resource(apiUrl + '/authors/:id', { id: '@id' }, { update: method: 'PUT' });
+    return author
+  }]);
+```
+we have passed the apiUrl constant, to set the resource url, and then we have to set the update method.
