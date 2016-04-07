@@ -26,6 +26,26 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/authors', {
+        templateUrl: 'views/authors/index.html',
+        controller: 'AuthorsIndexCtrl',
+        controllerAs: 'authorsIndex'
+      })
+      .when('/authors/new', {
+        templateUrl: 'views/authors/new.html',
+        controller: 'AuthorsNewCtrl',
+        controllerAs: 'authorsNew'
+      })
+      .when('/authors/:id/edit', {
+        templateUrl: 'views/authors/edit.html',
+        controller: 'AuthorsEditCtrl',
+        controllerAs: 'authorsEdit'
+      })
+      .when('/authors/:id', {
+        templateUrl: 'views/authors/show.html',
+        controller: 'AuthorsShowCtrl',
+        controllerAs: 'authorsShow'
+      })
       .otherwise({
         redirectTo: '/'
       });

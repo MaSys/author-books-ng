@@ -175,3 +175,49 @@ angular
     }
   ]);
 ```
+
+now that we have created the author controllers, we have to create templates and routes.
+
+modify your $routeProvider in app.js file to look like this:
+
+```javascript
+// app/scripts/app.js
+
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/authors', {
+        templateUrl: 'views/authors/index.html',
+        controller: 'AuthorsIndexCtrl',
+        controllerAs: 'authorsIndex'
+      })
+      .when('/authors/new', {
+        templateUrl: 'views/authors/new.html',
+        controller: 'AuthorsNewCtrl',
+        controllerAs: 'authorsNew'
+      })
+      .when('/authors/:id/edit', {
+        templateUrl: 'views/authors/edit.html',
+        controller: 'AuthorsEditCtrl',
+        controllerAs: 'authorsEdit'
+      })
+      .when('/authors/:id', {
+        templateUrl: 'views/authors/show.html',
+        controller: 'AuthorsShowCtrl',
+        controllerAs: 'authorsShow'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  })
+```
+
+now we have all the routes for authors.
+you can add the templates with the design you want:
+
+```html
+```
