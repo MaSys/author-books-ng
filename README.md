@@ -310,3 +310,16 @@ first, we have to run this command to install all dependencies:
 ```bash
 $ npm install && bower install
 ```
+
+after this, include your controllers and factories in the index.html:
+
+```html
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/author.js"></script>
+        <script src="scripts/services/book.js"></script>
+        <script src="scripts/controllers/authors.index.js"></script>
+        <!-- endbuild -->
+```
