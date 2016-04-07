@@ -32,19 +32,22 @@ we have passed the apiUrl constant, to set the resource url, and then we have to
 
 ## Author Controller
 
-Now that we have created the models, let's create the controllers.
-before we start, as we have many actions in the API, the final code of the Authors controller will be too big, so I have separated the controller into actions, each action will be in a separated file.
+Before we start, as we have many actions in the API, the final code of the Authors controller will be too big, so I have separated the controller into actions, each action will be in a separated file.
 
 #### Index Controller
+List all authors.
 [here](https://github.com/MaSys/authorBooks/blob/master/app/scripts/controllers/authors.index.js)
 #### New Controller
+To create a new author.
 [here](https://github.com/MaSys/authorBooks/blob/master/app/scripts/controllers/authors.new.js)
 #### Edit Controller
+To edit an exist author
 [here](https://github.com/MaSys/authorBooks/blob/master/app/scripts/controllers/authors.edit.js)
 #### Show Controller
+View details of an author.
 [here](https://github.com/MaSys/authorBooks/blob/master/app/scripts/controllers/authors.show.js)
 
-now that we have created the author controllers, we have to create templates and routes.
+now we have to create templates and routes.
 
 modify your $routeProvider in app.js file to look like this: [here line:23](https://github.com/MaSys/authorBooks/blob/master/app/scripts/app.js#L23)
 
@@ -52,13 +55,29 @@ now we have all the routes for authors.
 you can add the templates with the design you want:
 [here](https://github.com/MaSys/authorBooks/tree/master/app/views/authors)
 
-Now let's test and run the app to see everything working.
+after this, include your controllers and factories in the index.html:
+[here](https://github.com/MaSys/authorBooks/blob/master/app/index.html#L89)
 
-first, we have to run this command to install all dependencies:
+To test your app, run this command before:
 ```bash
 $ npm install && bower install
 ```
+and then:
+```bash
+$ grunt serve
+```
 
-after this, include your controllers and factories in the index.html:
-[here](https://github.com/MaSys/authorBooks/blob/master/app/index.html#L89)
+## Books Controllers
+Now that we have the Author CRUD, let's start with Books.
+let's create the books controllers:
+
+#### Index Controller
+We will list the author's books in authors.show.js
+[here](https://github.com/MaSys/authorBooks/blob/master/app/scripts/controllers/authors.show.js)
+#### New Controller
+to create new book for the author.
+[here](https://github.com/MaSys/authorBooks/blob/master/app/scripts/controllers/books.new.js)
+#### Edit Controller
+to edit the book.
+[here](https://github.com/MaSys/authorBooks/blob/master/app/scripts/controllers/books.edit.js)
 
