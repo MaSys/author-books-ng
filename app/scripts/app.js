@@ -19,6 +19,7 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+  .constant('apiUrl', 'http://localhost:3000/api')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -49,5 +50,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  })
-  .constant('apiUrl', 'htt://localhost:3000/api');
+  });

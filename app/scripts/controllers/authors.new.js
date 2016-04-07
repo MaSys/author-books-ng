@@ -12,8 +12,9 @@ angular
         author.$save(function(res){
           $location.path('/authors');
         }, function(res){
-          alert(JSON.stringify(res));
-        }
+          alert('Error!');
+          console.log(res);
+        });
       }
     }
   ]);
