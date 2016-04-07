@@ -111,3 +111,55 @@ angular
     }
   ]);
 ```
+
+```javascript
+// app/controllers/authors.new.js
+
+angular
+  .module('maSysPayApp')
+  .controller('AuthorsNewCtrl', [
+    '$scope',
+    'Author',
+    '$location',
+    function($scope, Author, $location){
+      $scope.author = new Author();
+
+      $scope.create = function(author){
+        author.$save(function(res){
+          $location.path('/authors');
+        }, function(res){
+          alert(JSON.stringify(res));
+        }
+      }
+    }
+  ]);
+```
+
+```javascript
+// app/controllers/authors.edit.js
+
+angular
+  .module('maSysPayApp')
+  .controller('AuthorsEditCtrl', [
+    '$scope',
+    'Author',
+    '$location',
+    '$routeParams',
+    function($scope, Author, $location, $routeParams){
+      $scope.author = Author.get({ id: $routeParams.id });
+
+      $scope.update = function(author){
+        Author.update(author, function(){
+          $location.path('/authors');
+        }, function(res){
+          alert 'Error!';
+          console.log res
+        });
+      }
+    }
+  ]);
+```
+
+```javascript
+// app/controllers/authors.show.js
+```
