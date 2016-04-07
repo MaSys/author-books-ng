@@ -1,5 +1,6 @@
+'use strict';
 angular
-  .module('maSysPayApp')
+  .module('authorBooksApp')
   .controller('AuthorsShowCtrl', [
     '$scope',
     'Author',

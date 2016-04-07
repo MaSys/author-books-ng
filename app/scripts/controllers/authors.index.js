@@ -1,13 +1,14 @@
+'use strict';
 angular
-  .module('maSysPayApp')
+  .module('authorBooksApp')
   .controller('AuthorsIndexCtrl', [
     '$scope',
     'Author',
-    fanction($scope, Author){
+    function($scope, Author){
       $scope.authors = Author.query();
 
       $scope.delete = function(author){
-        if(confirm 'Are you sure?'){
+        if(confirm('Are you sure?')){
           var author = new Author(author);
           author.$delete(function(){
             $scope.authors.forEach(function(a, index){

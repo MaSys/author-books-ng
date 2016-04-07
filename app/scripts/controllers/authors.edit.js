@@ -1,5 +1,6 @@
+'use strict';
 angular
-  .module('maSysPayApp')
+  .module('authorBooksApp')
   .controller('AuthorsEditCtrl', [
     '$scope',
     'Author',
@@ -12,8 +13,8 @@ angular
         Author.update(author, function(){
           $location.path('/authors');
         }, function(res){
-          alert 'Error!';
-          console.log res
+          alert('Error!');
+          console.log(res);
         });
       }
     }

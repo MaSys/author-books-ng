@@ -55,9 +55,9 @@ let's start with the Author model:
 ```javascript
 // app/scripts/services/author.js
 
-angular.module('maSysPayApp')
+angular.module('authorBooksApp')
   .factory('Author', ['$resource', 'apiUrl', function($resource, apiUrl){
-    var author = $resource(apiUrl + '/authors/:id', { id: '@id' }, { update: method: 'PUT' });
+    var author = $resource(apiUrl + '/authors/:id', { id: '@id' }, { update: { method: 'PUT' } });
     return author
   }]);
 ```
@@ -67,13 +67,13 @@ we have passed the apiUrl constant, to set the resource url, and then we have to
 ```javascript
 // app/scripts/book.js
 
-angular.module('maSysPayApp')
+angular.module('authorBooksApp')
   .factory('Book', ['$resource', 'apiUrl', function($resource, apiUrl){
     var book = $resource(apiUrl + '/authors/:author_id/books/:id', {
       id: '@id',
       author_id: '@author_id'
     }, {
-      update: method: 'PUT'
+      update: { method: 'PUT' }
     });
     return author
   }]);
@@ -87,16 +87,17 @@ before we start, as we have many actions in the API, the final code of the Autho
 ```javascript
 // app/controllers/authors.index.js
 
+'use strict';
 angular
-  .module('maSysPayApp')
-  .controller('AccountsIndexCtrl', [
+  .module('authorBooksApp')
+  .controller('AuthorsIndexCtrl', [
     '$scope',
     'Author',
-    fanction($scope, Author){
+    function($scope, Author){
       $scope.authors = Author.query();
 
       $scope.delete = function(author){
-        if(confirm 'Are you sure?'){
+        if(confirm('Are you sure?')){
           var author = new Author(author);
           author.$delete(function(){
             $scope.authors.forEach(function(a, index){
@@ -115,8 +116,9 @@ angular
 ```javascript
 // app/controllers/authors.new.js
 
+'use strict';
 angular
-  .module('maSysPayApp')
+  .module('authorBooksApp')
   .controller('AuthorsNewCtrl', [
     '$scope',
     'Author',
@@ -138,8 +140,9 @@ angular
 ```javascript
 // app/controllers/authors.edit.js
 
+'use strict';
 angular
-  .module('maSysPayApp')
+  .module('authorBooksApp')
   .controller('AuthorsEditCtrl', [
     '$scope',
     'Author',
@@ -152,8 +155,8 @@ angular
         Author.update(author, function(){
           $location.path('/authors');
         }, function(res){
-          alert 'Error!';
-          console.log res
+          alert('Error!');
+          console.log(res);
         });
       }
     }
@@ -163,8 +166,9 @@ angular
 ```javascript
 // app/controllers/authors.show.js
 
+'use strict';
 angular
-  .module('maSysPayApp')
+  .module('authorBooksApp')
   .controller('AuthorsShowCtrl', [
     '$scope',
     'Author',
@@ -298,4 +302,11 @@ you can add the templates with the design you want:
     <a ng-click="delete(author)" class="btn btn-danger"> Delete </a>
   </div>
 </div>
+```
+
+Now let's test and run the app to see everything working.
+
+first, we have to run this command to install all dependencies:
+```bash
+$ npm install && bower install
 ```
