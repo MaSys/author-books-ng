@@ -64,3 +64,17 @@ angular.module('maSysPayApp')
 we have passed the apiUrl constant, to set the resource url, and then we have to set the update method.
 
 ## Book Factory
+```javascript
+// app/scripts/book.js
+
+angular.module('maSysPayApp')
+  .factory('Book', ['$resource', 'apiUrl', function($resource, apiUrl){
+    var book = $resource(apiUrl + '/authors/:author_id/books/:id', {
+      id: '@id',
+      author_id: '@author_id'
+    }, {
+      update: method: 'PUT'
+    });
+    return author
+  }]);
+```
