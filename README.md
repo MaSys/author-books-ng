@@ -78,3 +78,36 @@ angular.module('maSysPayApp')
     return author
   }]);
 ```
+
+## Author Controller
+
+Now that we have created the models, let's create the controllers.
+before we start, as we have many actions in the API, the final code of the Authors controller will be too big, so I have separated the controller into actions, each action will be in a separated file.
+
+```javascript
+// app/controllers/authors.index.js
+
+angular
+  .module('maSysPayApp')
+  .controller('AccountsIndexCtrl', [
+    '$scope',
+    'Author',
+    fanction($scope, Author){
+      $scope.authors = Author.query();
+
+      $scope.delete = function(author){
+        if(confirm 'Are you sure?'){
+          var author = new Author(author);
+          author.$delete(function(){
+            $scope.authors.forEach(function(a, index){
+              if(author.id == a.id){
+                $scope.authors.splice(index, 1);
+                return false;
+              }
+            });
+          });
+        }
+      }
+    }
+  ]);
+```
